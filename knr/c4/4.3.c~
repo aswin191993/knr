@@ -1,0 +1,73 @@
+#define max 1000
+#include<stdio.h>
+void gettop(char s[100]);
+void push(double f);
+double atof(char s[]);
+int sp=0;
+double val[max];
+main()
+{
+	char c[100],s;
+	int i;
+	double op2;
+	printf("enter string");
+	scanf("%s",s);
+	int type;
+	while ((type = getop(s)) != EOF) 
+	{
+		switch (type) 
+		{
+			case (0<=9):
+				push(atof(s));
+			break;
+			case '+':
+				push(pop() + pop());
+			break;
+			case '*':
+				push(pop() * pop());
+			break;
+			case '-':
+				op2 = pop();
+				push(pop() - op2);
+			break;
+			case '%':
+				op2 = pop();
+				push(pop() % op2);
+			break;
+			case '/':
+				op2 = pop();
+				if (op2 != 0.0)
+					push(pop() / op2);
+			else
+				printf("error: zero divisor\n");
+			break;
+			case '\n':
+				printf("\t%.8g\n", pop());
+			break;
+			default:
+				printf("error: unknown command %s\n", s);
+			break;
+		}
+	}
+}
+void push(double f)
+{
+	if (sp < max)
+	val[sp++] = f;
+}
+void pop(double f2)
+{
+	if (sp > max)
+	val[sp--];
+}
+double atof(char s[])
+{
+	double val, power;
+	int i, sign;
+	for (i = 0; isspace(s[i]); i++)
+	;
+	while(isdigit(s[i]))
+	{	
+		i++;
+	}
+}

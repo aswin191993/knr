@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<string.h>
+unsigned getbit(unsigned x,int p,int n);
+main()
+{
+	unsigned k;
+	int p=0,n=3;
+	printf("%d",k=getbit(x,p,n);
+	
+}
+unsigned getbit(unsigned x,int p,int n)
+{
+	
+	return (x >> (p+1-n)) & ~(~0 << n);		
+}
